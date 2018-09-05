@@ -5,8 +5,11 @@ import java.io.*;
 
 public class Player {
 
+    private Player() {
+        Player player = new Player();
+
+    }
     void wonGame() {     //notify a player that they've won
-        //if get
         //System.out.println("Player " + " " +" wins!");
     }
 

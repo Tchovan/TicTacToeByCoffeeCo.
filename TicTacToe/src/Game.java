@@ -8,6 +8,8 @@ public class Game {
     }
 
     public void endGame() {     //ends the current game
+        System.out.println("End of Game.");
+
     }
 
     boolean addPlayer(Player newPlayer) {     //adds a new player

@@ -4,6 +4,7 @@ public class Game {
 
 
     public void startGame() {   //starts the game
+        System.out.println("The game is starting!");
     }
 
     public void endGame() {     //ends the current game
@@ -18,9 +19,11 @@ public class Game {
     }
 
     Player getLoser() {     //gets the losing player
+       // return loser;
     }
 
     Player getWinner() {    //gets the winning player
+        //  return winner;
     }
 
     char setLetterForPlayer(Player player) {   //sets the letter being used by the player

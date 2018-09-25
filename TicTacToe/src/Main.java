@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static char symbol;
+    private static int n = 0;
+
+
     public static void main(String[] args) throws Exception {      //Controls game flow
 
         Scanner scan = new Scanner(System.in);
@@ -16,7 +20,8 @@ public class Main {
         System.out.println("-------------------------------------");
         System.out.println("A player selects a square by choosing the corresponding numbers 1-9 on the game board:");
 
-        //print the instructional board*************************
+
+        //prints out the instructional board*************************
         System.out.println("-------------");
         int n = 1;
         for (int i = 0; i < 3; i++) {
@@ -27,8 +32,8 @@ public class Main {
             }
             System.out.println();
             System.out.println("-------------");
-        }
-        //******************************************************
+        }//prints out the instructional board*************************
+
 
         g.addPlayer(p1);
         g.setLetterForPlayer(p1);
@@ -40,15 +45,33 @@ public class Main {
         b.printBoard();
 
         boolean playing = true;
+        boolean xTurn = true;
+        boolean oTurn = true;
+
+        char symbol = 'X';
 
         while (playing) {
-            char symbol = 'X';
-            b.setNewBoard(getMove(), symbol);
-            b.printBoard();
-            System.out.println("Next player, choose where you would like to move:");
-            symbol = 'O';
+
+            while (xTurn) {
+                b.setNewBoard(getMove(), symbol);
+                b.printBoard();
+                System.out.println("Next player, choose where you would like to move:");
+                symbol = 'O';
+                oTurn = true;
+                xTurn = false;
+            }
+
+            while (oTurn) {
+                b.setNewBoard(getMove(), symbol);
+                b.printBoard();
+                System.out.println("Next player, choose where you would like to move:");
+                symbol = 'X';
+                xTurn = true;
+                oTurn = false;
+            }
         }
     }
+
 
     //function to determine which space the player chooses
     static int getMove(){
@@ -62,6 +85,7 @@ public class Main {
             playerMove = scan.nextInt();
         }
         if (playerMove > 0 && playerMove < 10) {
+            symbol = 'O';
             return playerMove;
         }
         return 0;

@@ -5,15 +5,11 @@ import java.io.*;
 
 public class Player {
 
-    private Player() {
-        Player player = new Player();
-
-    }
-    void wonGame() {     //notify a player that they've won
+    void wonGame(Board board, Game game) {     //notify a player that they've won
         //System.out.println("Player " + " " +" wins!");
     }
 
-    void LostGame() {       //notify a player that they've lost
+    void lostGame(Board board, Game game) {       //notify a player that they've lost
         //System.out.println("Player " + "" +" loses!");
     }
 

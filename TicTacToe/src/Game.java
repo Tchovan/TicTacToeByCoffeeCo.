@@ -12,25 +12,26 @@ public class Game {
     final private char XCHAR = 'X';
     final private char OCHAR = 'O';
 
-    public game() {
+
+
+
+    public Game() {
         players = new ArrayList<Player>();
     }
     //create test for throw exception invalid number of players
 
 
     public void startGame() throws Exception {   //starts the game
-        System.out.println("The game is starting!");
-        Board gameBoard = new Board();
-        startGame(gameBoard);
-
         if (players.size() == 2) {
             //game must have exactly two players
-            System.out.print("The game is about to begin!");
+            System.out.print("Let's start the game -- X goes first!");
+            System.out.print("");
         }
         else {
             throw new Exception("There is an invalid number of players.");
         }
     }
+
 
     public void endGame() {     //ends the current game
         System.out.println("End of Game.");
@@ -78,16 +79,16 @@ public class Game {
         }
         //checks horizontal rows
         for (int j = 0; j<3; j++) {
-            if ((board.getPlayerPosition(new int[]{j, 0}) == board.getPlayerPosition(new int[]{j, 1})) && (board.getPlayerPosition(new int[]{j, 1}) == board.getPlayerPosition(new int[]{j, 2})))
-                ;
-            return board.getPlayerPosition(new int[]{j, 2});
-
-        else{
+            if ((board.getPlayerPosition(new int[]{j, 0}) == board.getPlayerPosition(new int[]{j, 1})) && (board.getPlayerPosition(new int[]{j, 1}) == board.getPlayerPosition(new int[]{j, 2}))) {
+                return board.getPlayerPosition(new int[]{j, 2});
+            }
+            else{
                 return null;
             }
             //TODO: Figure out a way to check diagonal wins
         }
 
+        return null;
     }
 
     char setLetterForPlayer(Player player) {   //sets the letter being used by the player
@@ -132,9 +133,6 @@ public class Game {
         currentPlayer = getNextPlayer(currentPlayer);
     }
 
-
-
-
     public boolean move(Player player, int[] position){
             boolean validMove = board.move(player, position);
             //first it will check if there are any winners
@@ -156,11 +154,8 @@ public class Game {
                 // If a valid move was made it will then switch the players
                 switchPlayer();
             }
-
+            return validMove;
         }
-
-
-
 
     public Board getBoard() {
         return board;   //returns the game board

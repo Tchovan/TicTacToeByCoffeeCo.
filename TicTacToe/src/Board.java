@@ -74,6 +74,15 @@ public class Board {
         return ((checkMatching(board[0][0], board[1][1], board[2][2]) == true) || (checkMatching(board[0][2], board[1][1], board[2][0]) == true));
     }
 
+    boolean checkWin() {
+        if (checkRows() || checkColumns() || checkDiagonals() ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     boolean isFull() {      //checks to see if the board is full
         boolean full = true;
         for (int i=0; i<3; i++) {
@@ -84,15 +93,6 @@ public class Board {
             }
         }
         return full;
-    }
-
-
-    Player getPlayerPosition(int[] position) {      //returns players given position
-        return null;
-    }
-
-    boolean move(Player player, int[] position) {   //player makes a move on the board
-        return false;
     }
 
 

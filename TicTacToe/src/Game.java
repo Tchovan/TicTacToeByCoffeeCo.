@@ -57,37 +57,6 @@ public class Game {
         }
     }
 
-    Player getLoser() {     //gets the losing player
-        Player winner = getWinner();
-        Player loser = getNextPlayer(winner);
-        return loser;
-    }
-
-    Player getWinner() {    //gets the winning player
-        //  return winner;
-        //checks vertical rows
-        for (int i = 0; i < 3; i++) {
-            if((board.getPlayerPosition(new int[]{0, i}) == board.getPlayerPosition(new int[]{1,i})) && (board.getPlayerPosition(new int[] {1,i}) == board.getPlayerPosition(new int[]{2,i}))){
-                return board.getPlayerPosition(new int[]{0, i});
-            }
-            else{
-                return null;
-            }
-        }
-        //checks horizontal rows
-        for (int j = 0; j<3; j++) {
-            if ((board.getPlayerPosition(new int[]{j, 0}) == board.getPlayerPosition(new int[]{j, 1})) && (board.getPlayerPosition(new int[]{j, 1}) == board.getPlayerPosition(new int[]{j, 2}))) {
-                return board.getPlayerPosition(new int[]{j, 2});
-            }
-            else{
-                return null;
-            }
-            //TODO: Figure out a way to check diagonal wins
-        }
-
-        return null;
-    }
-
     char setLetterForPlayer(Player player) {   //sets the letter being used by the player
             int index = getIndexOfPlayer(player);
             if (index == -1){
@@ -131,8 +100,9 @@ public class Game {
         currentPlayer = getNextPlayer(currentPlayer);
     }
 
-    public boolean move(Player player, int[] position){
-            boolean validMove = board.move(player, position);
+    /*
+    public boolean move(){
+            boolean validMove = true;
             //first it will check if there are any winners
             Player winner = getWinner();
             Player loser = getLoser();
@@ -154,6 +124,7 @@ public class Game {
             }
             return validMove;
         }
+        */
 
     public Board getBoard() {
         return board;   //returns the game board

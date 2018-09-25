@@ -18,7 +18,7 @@ public class Main {
 
         System.out.println("Welcome to Tic Tac Toe by Coffee Co.!");
         System.out.println("-------------------------------------");
-        System.out.println("A player selects a square by choosing the corresponding numbers 1-9 on the game board:");
+        System.out.println("A player selects a square by choosing the corresponding numbers 1-9 on the game board as follows:");
 
 
         //prints out the instructional board*************************
@@ -55,28 +55,48 @@ public class Main {
             while (xTurn) {
                 b.setNewBoard(getMove(), symbol);
                 b.printBoard();
-                System.out.println("Next player, choose where you would like to move:");
-                symbol = 'O';
-                oTurn = true;
-                xTurn = false;
+                if (b.checkWin()) {
+                    System.out.println();
+                    System.out.println("You just won the game!");
+                    playing = false;
+                    xTurn = false;
+
+                }
+                else {
+                    System.out.println();
+                    System.out.println("Next player's turn.");
+                    symbol = 'O';
+                    oTurn = true;
+                    xTurn = false;
+                }
             }
 
-            while (oTurn) {
-                b.setNewBoard(getMove(), symbol);
-                b.printBoard();
-                System.out.println("Next player, choose where you would like to move:");
-                symbol = 'X';
-                xTurn = true;
-                oTurn = false;
+                while (oTurn) {
+                    b.setNewBoard(getMove(), symbol);
+                    b.printBoard();
+                    if (b.checkWin()) {
+                        System.out.println();
+                        System.out.println("You just won the game!");
+                        playing = false;
+                        oTurn = false;
+                    }
+                    else {
+                        System.out.println();
+                        System.out.println("Next player's turn.");
+                        symbol = 'X';
+                        xTurn = true;
+                        oTurn = false;
+                    }
+                }
             }
-        }
+
+        g.endGame();
+
     }
 
-
-    //function to determine which space the player chooses
+    //determines which space the player chooses
     static int getMove(){
         Scanner scan = new Scanner(System.in);
-        System.out.println();
         System.out.println("Choose where you would like to move:");
         int playerMove = scan.nextInt();
         while (playerMove <=0 || playerMove >9) {

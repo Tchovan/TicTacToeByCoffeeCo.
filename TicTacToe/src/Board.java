@@ -19,8 +19,20 @@ public class Board {
         }
     }
 
+    public void setNewBoard(int playerMove, char playerLetter){
+        if (playerMove == 1) { board[0][0] = playerLetter; }       //sets top left
+        else if (playerMove == 2) { board[0][1] = playerLetter; }  //sets top middle
+        else if (playerMove == 3) { board[0][2] = playerLetter; }  //sets top right
+        else if (playerMove == 4) { board[1][0] = playerLetter; }  //sets middle left
+        else if (playerMove == 5) { board[1][1] = playerLetter; }  //sets middle middle
+        else if (playerMove == 6) { board[1][2] = playerLetter; }  //sets middle right
+        else if (playerMove == 7) { board[2][0] = playerLetter; }  //sets bottom left
+        else if (playerMove == 8) { board[2][1] = playerLetter; } //sets bottom middle
+        else if (playerMove == 9) { board[2][2] = playerLetter; }  //sets bottom right
+        }
+
     public void printBoard() {         //prints board in standard format
-        System.out.println("");
+        System.out.println();
         System.out.println("-------------");
         for (int i=0; i <3; i++) {
             System.out.print("| ");

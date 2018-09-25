@@ -13,8 +13,6 @@ public class Game {
     final private char OCHAR = 'O';
 
 
-
-
     public Game() {
         players = new ArrayList<Player>();
     }
@@ -24,8 +22,7 @@ public class Game {
     public void startGame() throws Exception {   //starts the game
         if (players.size() == 2) {
             //game must have exactly two players
-            System.out.print("Let's start the game -- X goes first!");
-            System.out.print("");
+            System.out.print("Now, let's start the game -- X goes first!");
         }
         else {
             throw new Exception("There is an invalid number of players.");
@@ -127,6 +124,7 @@ public class Game {
             return null;
         }
     }
+
 
     private void switchPlayer() {
         //selects the next player

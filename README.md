@@ -1,5 +1,5 @@
 # TicTacToeByCoffeeCo.
-~An exhilarating game of Tic Tac Toe for your entertainment.~
+An exhilarating game of Tic Tac Toe for your entertainment.
 
 This game is a traditional game of Tic Tac Toe. It is played in an IDE console.
 The game starts via the function main(String args[]) in Main.java.

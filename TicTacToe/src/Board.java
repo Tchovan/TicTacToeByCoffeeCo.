@@ -19,6 +19,7 @@ public class Board {
         }
     }
 
+
     public void setNewBoard(int playerMove, char playerLetter){
         if (playerMove == 1) { board[0][0] = playerLetter; }       //sets top left
         else if (playerMove == 2) { board[0][1] = playerLetter; }  //sets top middle

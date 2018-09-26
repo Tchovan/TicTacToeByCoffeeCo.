@@ -6,18 +6,17 @@ public class Main {
 
     private static char symbol;
     private static int n = 0;
-
+    private static int[] moves = new int[10];
 
     public static void main(String[] args) throws Exception {      //Controls game flow
 
         Scanner scan = new Scanner(System.in);
         Board b = new Board();
-        Game g = new Game();
-        Player p1 = new Player();
-        Player p2 = new Player();
 
+        System.out.println();
         System.out.println("Welcome to Tic Tac Toe by Coffee Co.!");
         System.out.println("-------------------------------------");
+        System.out.println();
         System.out.println("A player selects a square by choosing the corresponding numbers 1-9 on the game board as follows:");
 
 
@@ -34,12 +33,8 @@ public class Main {
             System.out.println("-------------");
         }//prints out the instructional board*************************
 
-
-        g.addPlayer(p1);
-        g.setLetterForPlayer(p1);
-        g.addPlayer(p2);
-        g.setLetterForPlayer(p2);
-        g.startGame();
+        System.out.println();
+        System.out.println("Let's begin.");
 
         b.setEmptyBoard();
         b.printBoard();
@@ -60,7 +55,12 @@ public class Main {
                     System.out.println("You just won the game!");
                     playing = false;
                     xTurn = false;
-
+                }
+                else if (b.isFull()) {
+                    System.out.println();
+                    System.out.println("It's a draw!");
+                    playing = false;
+                    xTurn = false;
                 }
                 else {
                     System.out.println();
@@ -74,12 +74,18 @@ public class Main {
                 while (oTurn) {
                     b.setNewBoard(getMove(), symbol);
                     b.printBoard();
-                    if (b.checkWin()) {
+                     if (b.checkWin()) {
                         System.out.println();
                         System.out.println("You just won the game!");
                         playing = false;
                         oTurn = false;
                     }
+                    else if (b.isFull()) {
+                         System.out.println();
+                         System.out.println("It's a draw!");
+                         playing = false;
+                         oTurn = false;
+                     }
                     else {
                         System.out.println();
                         System.out.println("Next player's turn.");
@@ -90,21 +96,28 @@ public class Main {
                 }
             }
 
-        g.endGame();
+        System.out.println("End of Game.");
 
     }
 
-    //determines which space the player chooses
+    //determines which space the player chooses and checks if taken
     static int getMove(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Choose where you would like to move:");
         int playerMove = scan.nextInt();
+        while (moves[playerMove] == playerMove) {
+            System.out.println("That spot is already taken. Please try again.");
+            System.out.println("Choose where you would like to move:");
+            playerMove = scan.nextInt();
+        }
         while (playerMove <=0 || playerMove >9) {
             System.out.println("Input invalid. Please try again.");
             System.out.println("Choose where you would like to move:");
             playerMove = scan.nextInt();
         }
-        if (playerMove > 0 && playerMove < 10) {
+        if (playerMove > 0 && playerMove < 10 && moves[playerMove] != playerMove) {
+            moves[0] = 0;
+            moves[playerMove] = playerMove;
             symbol = 'O';
             return playerMove;
         }

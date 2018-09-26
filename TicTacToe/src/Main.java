@@ -105,13 +105,14 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Choose where you would like to move:");
         int playerMove = scan.nextInt();
-        while (moves[playerMove] == playerMove) {
-            System.out.println("That spot is already taken. Please try again.");
+
+        while (playerMove <=0 || playerMove >9) {
+            System.out.println("Input invalid. Please try again.");
             System.out.println("Choose where you would like to move:");
             playerMove = scan.nextInt();
         }
-        while (playerMove <=0 || playerMove >9) {
-            System.out.println("Input invalid. Please try again.");
+        while (moves[playerMove] == playerMove) {
+            System.out.println("That spot is already taken. Please try again.");
             System.out.println("Choose where you would like to move:");
             playerMove = scan.nextInt();
         }

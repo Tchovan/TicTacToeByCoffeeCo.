@@ -25,7 +25,9 @@ The user must re-run the game to play again.
 
 
 Code is in Java ~~ two classes:
+
 Main: Handles initiation of the game and controls game flow.
+
 Board: Handles creation of the board and controls game logic.
 
 Thanks for playing!
